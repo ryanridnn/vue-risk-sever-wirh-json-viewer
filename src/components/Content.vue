@@ -15,12 +15,21 @@ const connection = useConnectionStore();
 			:node="node"
 			:nodeIndex="index"
 			:status="connection.dagNodesStatus[index]"
+			class="node"
 		/>
 	</div>
 </template>
 
 <style lang="scss">
 .nodes {
-	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-top: 1rem;
+}
+
+.node:not(:last-child) {
+	border-bottom: 2px dashed #aaa;
+	padding-bottom: 3rem;
 }
 </style>

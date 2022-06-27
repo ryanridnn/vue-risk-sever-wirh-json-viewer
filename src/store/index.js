@@ -46,3 +46,23 @@ export const useConnectionStore = defineStore("connectionStore", {
 		},
 	},
 });
+
+export const useAlertStore = defineStore("alertStore", {
+	state: () => ({
+		show: false,
+		message: "",
+		timeout: null,
+	}),
+	actions: {
+		showAlert(message, time = 5000) {
+			clearTimeout(this.timeout);
+			this.show = true;
+			this.message = message;
+
+			this.timeout = setTimeout(() => {
+				this.show = false;
+				this.message = null;
+			}, time);
+		},
+	},
+});

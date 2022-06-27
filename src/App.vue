@@ -1,6 +1,7 @@
 <script setup>
 import Header from "./components/Header.vue";
 import Content from "./components/Content.vue";
+import Alert from "./components/Alert.vue";
 import { useConnectionStore } from "./store";
 
 const connection = useConnectionStore();
@@ -10,6 +11,7 @@ const connection = useConnectionStore();
   <div class="container">
     <Header />
     <Content v-if="connection.connected" />
+    <Alert />
   </div>
 </template>
 

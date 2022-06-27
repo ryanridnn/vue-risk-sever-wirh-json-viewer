@@ -2,5 +2,29 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
+	font-family: "Inter", sans-serif;
+}
+
+body {
+	background-color: rgb(249 250 251);
+}
+
+input,
+button {
+	padding: 0.25rem 0.5rem;
+
+	border: none;
+	background: none;
+}
+
+input {
+	background: white;
+}
+
+input:disabled {
+	background: rgb(243 244 246);
+}
+
+button {
+	cursor: pointer;
 }

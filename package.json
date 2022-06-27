@@ -8,11 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "chart.js": "^3.8.0",
     "pinia": "^2.0.14",
     "sass": "^1.53.0",
     "vue": "^3.2.25",
-    "vue-json-editor": "^1.4.3",
-    "vue3-json-editor": "^1.1.5"
+    "vue-chartjs": "^4.1.1",
+    "vue-json-viewer": "^3.0.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",

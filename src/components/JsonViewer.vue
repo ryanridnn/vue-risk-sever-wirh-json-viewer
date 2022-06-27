@@ -1,25 +1,22 @@
 <script setup>
 import { defineProps, watchEffect, toRef } from "vue";
-import { Vue3JsonEditor } from "vue3-json-editor";
+import JsonViewer from "vue-json-viewer";
 
 const props = defineProps({
-	schema: Object,
-	mode: String,
-});
-
-const schema = toRef(props, "schema");
-
-watchEffect(() => {
-	console.log(schema);
+	content: Object,
 });
 </script>
 
 <template>
-	<Vue3JsonEditor
-		v-model="schema"
-		:expandedOnStart="true"
-		:mode="props.mode"
-	/>
+	<JsonViewer :value="props.content" />
 </template>
 
-<style></style>
+<style lang="scss">
+.jv-container {
+	border-radius: 1rem;
+}
+
+.jv-node {
+	padding: 0.5rem 0;
+}
+</style>

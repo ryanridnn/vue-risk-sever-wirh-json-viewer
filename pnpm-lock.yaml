@@ -2,19 +2,21 @@ lockfileVersion: 5.4
 
 specifiers:
   '@vitejs/plugin-vue': ^2.3.3
+  chart.js: ^3.8.0
   pinia: ^2.0.14
   sass: ^1.53.0
   vite: ^2.9.9
   vue: ^3.2.25
-  vue-json-editor: ^1.4.3
-  vue3-json-editor: ^1.1.5
+  vue-chartjs: ^4.1.1
+  vue-json-viewer: ^3.0.4
 
 dependencies:
+  chart.js: 3.8.0
   pinia: 2.0.14_vue@3.2.37
   sass: 1.53.0
   vue: 3.2.37
-  vue-json-editor: 1.4.3
-  vue3-json-editor: 1.1.5
+  vue-chartjs: 4.1.1_chart.js@3.8.0+vue@3.2.37
+  vue-json-viewer: 3.0.4_vue@3.2.37
 
 devDependencies:
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.12+vue@3.2.37
@@ -161,6 +163,10 @@ packages:
       fill-range: 7.0.1
     dev: false
 
+  /chart.js/3.8.0:
+    resolution: {integrity: sha512-cr8xhrXjLIXVLOBZPkBZVF6NDeiVIrPLHcMhnON7UufudL+CNeRrD+wpYanswlm8NpudMdrt3CHoLMQMxJhHRg==}
+    dev: false
+
   /chokidar/3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -176,13 +182,20 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /core-js/3.23.3:
-    resolution: {integrity: sha512-oAKwkj9xcWNBAvGbT//WiCdOMpb9XQG92/Fe3ABFM/R16BsHgePG00mFOgKf7IsCtfj8tA1kHtf/VwErhriz5Q==}
-    requiresBuild: true
+  /clipboard/2.0.11:
+    resolution: {integrity: sha512-C+0bbOqkezLIsmWSvlsXS0Q0bmkugu7jcfMIACB+RDEntIzQIkdr148we28AfSloQLRdZlYL/QYyrq05j/3Faw==}
+    dependencies:
+      good-listener: 1.2.2
+      select: 1.1.2
+      tiny-emitter: 2.1.0
     dev: false
 
   /csstype/2.6.20:
     resolution: {integrity: sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==}
+    dev: false
+
+  /delegate/3.2.0:
+    resolution: {integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==}
     dev: false
 
   /esbuild-android-64/0.14.47:
@@ -422,6 +435,12 @@ packages:
       is-glob: 4.0.3
     dev: false
 
+  /good-listener/1.2.2:
+    resolution: {integrity: sha512-goW1b+d9q/HIwbVYZzZ6SsTr4IgE+WA44A0GmPIQstuOrgsFcT7VEJ48nmr9GaRtNu0XTKacFLGnBPAM6Afouw==}
+    dependencies:
+      delegate: 3.2.0
+    dev: false
+
   /has/1.0.3:
     resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==}
     engines: {node: '>= 0.4.0'}
@@ -550,6 +569,10 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
+  /select/1.1.2:
+    resolution: {integrity: sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==}
+    dev: false
+
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -567,6 +590,10 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /tiny-emitter/2.1.0:
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
+    dev: false
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
@@ -605,6 +632,16 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /vue-chartjs/4.1.1_chart.js@3.8.0+vue@3.2.37:
+    resolution: {integrity: sha512-rKIQ3jPrjhwxjKdNJppnYxRuBSrx4QeM3nNHsfIxEqjX6QS4Jq6e6vnZBxh2MDpURDC2uvuI2N0eIt1cWXbBVA==}
+    peerDependencies:
+      chart.js: ^3.7.0
+      vue: ^3.0.0-0 || ^2.6.0
+    dependencies:
+      chart.js: 3.8.0
+      vue: 3.2.37
+    dev: false
+
   /vue-demi/0.13.1_vue@3.2.37:
     resolution: {integrity: sha512-xmkJ56koG3ptpLnpgmIzk9/4nFf4CqduSJbUM0OdPoU87NwRuZ6x49OLhjSa/fC15fV+5CbEnrxU4oyE022svg==}
     engines: {node: '>=12'}
@@ -620,15 +657,13 @@ packages:
       vue: 3.2.37
     dev: false
 
-  /vue-json-editor/1.4.3:
-    resolution: {integrity: sha512-st9HdXBgCnyEmmfWrZQiKzp4KuYXzmYVUNDn5h6Fa18MrrGS1amnyUFyv7hQFsNBDW27B7BKkdGOqszYT1srAg==}
-    engines: {node: '>= 4.0.0', npm: '>= 3.0.0'}
+  /vue-json-viewer/3.0.4_vue@3.2.37:
+    resolution: {integrity: sha512-pnC080rTub6YjccthVSNQod2z9Sl5IUUq46srXtn6rxwhW8QM4rlYn+CTSLFKXWfw+N3xv77Cioxw7B4XUKIbQ==}
+    peerDependencies:
+      vue: ^3.2.2
     dependencies:
-      vue: 2.6.14
-    dev: false
-
-  /vue/2.6.14:
-    resolution: {integrity: sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==}
+      clipboard: 2.0.11
+      vue: 3.2.37
     dev: false
 
   /vue/3.2.37:
@@ -639,11 +674,4 @@ packages:
       '@vue/runtime-dom': 3.2.37
       '@vue/server-renderer': 3.2.37_vue@3.2.37
       '@vue/shared': 3.2.37
-    dev: false
-
-  /vue3-json-editor/1.1.5:
-    resolution: {integrity: sha512-p+hbl5SdMifA9brPt9TsG2HYB7Xy7xy98b61zcIusVpwhGtS5a0IwWPKM7BXcj9poIdc/bPs4AFchQOHIBq++w==}
-    dependencies:
-      core-js: 3.23.3
-      vue: 3.2.37
     dev: false
