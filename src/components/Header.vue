@@ -61,7 +61,7 @@ const handleCopy = () => {
 
 <style lang="scss">
 header {
-	margin-top: 2rem;
+	margin-top: 1rem;
 }
 
 .connection {
@@ -98,8 +98,8 @@ header {
 	}
 
 	&__connect:disabled {
-		background-color: rgb(147 197 253);
-		color: #eee;
+		background-color: rgb(161 161 170);
+		color: #ddd;
 	}
 
 	&__disconnect {
@@ -112,12 +112,13 @@ header {
 	}
 
 	&__copy {
-		background-color: rgb(167 243 208);
+		background-color: rgb(39 39 42);
+		color: white;
 	}
 }
 
 .header__divider {
-	margin-top: 1.5rem;
+	margin-top: 1rem;
 	border-bottom: 2px dashed #aaa;
 }
 </style>

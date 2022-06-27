@@ -25,7 +25,7 @@ const connection = useConnectionStore();
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	margin-top: 1rem;
+	margin-top: 2rem;
 }
 
 .node:not(:last-child) {

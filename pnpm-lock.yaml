@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@heroicons/vue': ^1.0.6
   '@vitejs/plugin-vue': ^2.3.3
   chart.js: ^3.8.0
   pinia: ^2.0.14
@@ -11,6 +12,7 @@ specifiers:
   vue-json-viewer: ^3.0.4
 
 dependencies:
+  '@heroicons/vue': 1.0.6_vue@3.2.37
   chart.js: 3.8.0
   pinia: 2.0.14_vue@3.2.37
   sass: 1.53.0
@@ -43,6 +45,14 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
+    dev: false
+
+  /@heroicons/vue/1.0.6_vue@3.2.37:
+    resolution: {integrity: sha512-ng2YcCQrdoQWEFpw+ipFl2rZo8mZ56v0T5+MyfQQvNqfKChwgP6DMloZLW+rl17GEcHkE3H82UTAMKBKZr4+WA==}
+    peerDependencies:
+      vue: '>= 3'
+    dependencies:
+      vue: 3.2.37
     dev: false
 
   /@vitejs/plugin-vue/2.3.3_vite@2.9.12+vue@3.2.37:

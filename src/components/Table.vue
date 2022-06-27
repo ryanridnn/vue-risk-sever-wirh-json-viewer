@@ -51,6 +51,7 @@ const tableHeadings = computed(() => {
 		overflow-y: auto;
 		max-height: 600px;
 		position: relative;
+		font-size: 0.875rem;
 	}
 
 	&__row {

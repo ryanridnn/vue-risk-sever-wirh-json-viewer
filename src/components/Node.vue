@@ -88,7 +88,6 @@ const handleSubmit = (e, key) => {
 
 <style lang="scss">
 .node {
-	margin-top: 2rem;
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
@@ -110,21 +109,21 @@ const handleSubmit = (e, key) => {
 	}
 
 	&--completed {
-		color: rgb(4 120 87);
+		color: #177d59;
 
 		.node__status {
-			color: rgb(4 120 87);
+			color: #177d59;
 		}
 	}
 
 	&__heading {
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
 		align-items: center;
 	}
 
 	&__name {
-		font-size: 1.125rem;
-		font-weight: 500;
+		font-size: 1rem;
+		font-weight: 600;
 	}
 
 	&__status {
@@ -136,13 +135,12 @@ const handleSubmit = (e, key) => {
 	&__inputs {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 0.5rem;
 		margin-bottom: 1.5rem;
 
 		h2 {
-			font-size: 1.125rem;
-			font-weight: 500;
-			margin-bottom: 0.5rem;
+			font-size: 1rem;
+			font-weight: 600;
 		}
 
 		input {
@@ -160,11 +158,10 @@ const handleSubmit = (e, key) => {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		margin-top: 0.5rem;
 
 		h2 {
-			font-size: 1.125rem;
-			font-weight: 500;
+			font-size: 1rem;
+			font-weight: 600;
 			margin-bottom: 0.5rem;
 		}
 	}
