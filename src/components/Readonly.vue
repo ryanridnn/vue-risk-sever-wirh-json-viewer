@@ -28,6 +28,7 @@ const props = defineProps({
 	align-items: center;
 
 	max-width: 520px;
+	min-height: 2.25rem;
 
 	&__input {
 		min-width: 280px;

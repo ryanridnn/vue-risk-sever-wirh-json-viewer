@@ -80,14 +80,11 @@ const invertToggled = () => {
 
 <style lang="scss">
 .multiple {
-	margin-bottom: 1rem;
-
 	&__top {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		margin-bottom: 1rem;
 	}
 
 	&__action {
@@ -139,6 +136,10 @@ const invertToggled = () => {
 				transform: rotate(180deg);
 			}
 		}
+	}
+
+	&__bottom {
+		padding: 1rem 0;
 	}
 }
 

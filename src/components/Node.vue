@@ -159,7 +159,7 @@ const handleSubmit = (e, key) => {
 	&__outputs {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.75rem;
 		font-size: 0.875rem;
 		font-weight: 500;
 
