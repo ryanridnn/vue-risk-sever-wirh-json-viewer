@@ -137,6 +137,8 @@ const handleSubmit = (e, key) => {
 		flex-direction: column;
 		gap: 0.5rem;
 		margin-bottom: 1.5rem;
+		font-size: 0.875rem;
+		font-weight: 500;
 
 		h2 {
 			font-size: 1rem;
@@ -158,6 +160,8 @@ const handleSubmit = (e, key) => {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 500;
 
 		h2 {
 			font-size: 1rem;
