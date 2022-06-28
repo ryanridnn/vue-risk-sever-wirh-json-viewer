@@ -1,7 +1,7 @@
 <script setup>
-import { defineProps, watchEffect, computed, toRef } from "vue";
+import { defineProps, computed } from "vue";
 import Output from "./Output.vue";
-import { useAlertStore } from "../store";
+import { useConnectionStore, useAlertStore } from "../store";
 import { updateParam } from "../connection";
 import { STATUS } from "../constants";
 
@@ -9,19 +9,21 @@ const props = defineProps({
 	node: Object,
 	status: String,
 	nodeIndex: Number,
+	progress: Number,
 });
-
-const node = computed(() => props.node);
-const status = toRef(props, "status");
 
 const alert = useAlertStore();
 
+const connection = useConnectionStore();
+
+const progress = computed(() => (props.progress * 100).toFixed() + "%");
+
 const nodeClass = computed(() => {
-	if (status.value === STATUS.NOT_READY) {
+	if (props.status === STATUS.NOT_READY) {
 		return "node--not-ready";
-	} else if (status.value === STATUS.IN_PROGRESS) {
+	} else if (props.status === STATUS.IN_PROGRESS) {
 		return "node--in-progress";
-	} else if (status.value === STATUS.COMPLETED) {
+	} else if (props.status === STATUS.COMPLETED) {
 		return "node--completed";
 	} else {
 		return "";
@@ -53,14 +55,26 @@ const handleSubmit = (e, key) => {
 <template>
 	<div class="node" :class="nodeClass">
 		<div class="node__heading">
-			<span class="node__name">Node: {{ node.name }}</span>
-			<input type="text" class="node__status" disabled :value="status" />
+			<span class="node__name">Node: {{ props.node.name }}</span>
+			<div class="node__status">
+				<div class="node__status__text">
+					{{
+						status === STATUS.IN_PROGRESS
+							? `${STATUS.IN_PROGRESS}: ${progress}`
+							: status
+					}}
+				</div>
+				<div
+					class="node__status__bar"
+					:style="{ width: progress }"
+				></div>
+			</div>
 		</div>
 		<div class="node__inputs">
 			<h2>Input params</h2>
 
 			<div
-				v-for="key in Object.keys(node.input_params)"
+				v-for="key in Object.keys(props.node.input_params)"
 				:key="key"
 				class="node__input"
 			>
@@ -69,7 +83,7 @@ const handleSubmit = (e, key) => {
 				</span>
 				<input
 					type="number"
-					:value="node.input_params[key]"
+					:value="props.node.input_params[key]"
 					@keydown="(e) => handleSubmit(e, key)"
 					:max="key === 'parallel_shift' ? 0.05 : false"
 					:min="key === 'parallel_shift' ? -0.05 : false"
@@ -79,8 +93,8 @@ const handleSubmit = (e, key) => {
 		<div class="node__outputs">
 			<h2>Output Params</h2>
 			<Output
-				v-for="key in Object.keys(node.output_params)"
-				:output="{ [key]: node.output_params[key] }"
+				v-for="key in Object.keys(props.node.output_params)"
+				:output="{ [key]: props.node.output_params[key] }"
 			/>
 		</div>
 	</div>
@@ -94,26 +108,24 @@ const handleSubmit = (e, key) => {
 
 	&--not-ready {
 		color: rgb(220 38 38);
-
-		.node__status {
-			color: rgb(220 38 38);
-		}
 	}
 
 	&--in-progress {
 		color: #ffa500;
 
 		.node__status {
-			color: #ffa500;
+			color: white;
+			background: rgb(251 191 36);
+
+			&__bar {
+				opacity: 1;
+				background: rgb(245 158 11);
+			}
 		}
 	}
 
 	&--completed {
 		color: #177d59;
-
-		.node__status {
-			color: #177d59;
-		}
 	}
 
 	&__heading {
@@ -130,6 +142,27 @@ const handleSubmit = (e, key) => {
 		padding: 0.5rem;
 		min-width: 280px;
 		font-weight: 500;
+		background: #fbfbfb;
+		font-size: 0.875rem;
+		position: relative;
+		border-radius: 0.25rem;
+		overflow: hidden;
+	}
+
+	&__status__bar {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		// width: 60%;
+		background: #ffa500;
+		transition: all 0.2s ease;
+	}
+
+	&__status__text {
+		position: relative;
+		z-index: 2;
 	}
 
 	&__inputs {

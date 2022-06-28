@@ -29,29 +29,29 @@ const invertToggled = () => {
 <template>
 	<div class="multiple">
 		<div class="multiple__top">
-			<div class="multiple__label">
-				{{ props.label }}
-			</div>
-			<div class="multiple__action">
-				<div v-if="!props.jsonOnly && toggled" class="multiple__views">
-					<button
-						v-for="key in Object.keys(MULTIPLE_VIEW_TYPES)"
-						class="multiple__view"
-						@click="handleSelect(MULTIPLE_VIEW_TYPES[key])"
-						:class="{
-							'multiple__view--selected':
-								selectedView === MULTIPLE_VIEW_TYPES[key],
-						}"
-					>
-						{{ MULTIPLE_VIEW_TYPES[key] }}
-					</button>
-				</div>
+			<div class="multiple__top-left">
 				<button
 					@click="invertToggled"
 					class="multiple__toggler"
 					:class="{ 'multiple__toggler--toggled': toggled }"
 				>
 					<ChevronUpIcon class="icon" />
+				</button>
+				<div class="multiple__label">
+					{{ props.label }}
+				</div>
+			</div>
+			<div v-if="!props.jsonOnly && toggled" class="multiple__views">
+				<button
+					v-for="key in Object.keys(MULTIPLE_VIEW_TYPES)"
+					class="multiple__view"
+					@click="handleSelect(MULTIPLE_VIEW_TYPES[key])"
+					:class="{
+						'multiple__view--selected':
+							selectedView === MULTIPLE_VIEW_TYPES[key],
+					}"
+				>
+					{{ MULTIPLE_VIEW_TYPES[key] }}
 				</button>
 			</div>
 		</div>
@@ -87,10 +87,10 @@ const invertToggled = () => {
 		width: 100%;
 	}
 
-	&__action {
+	&__top-left {
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
+		gap: 0.75rem;
 	}
 
 	&__views {

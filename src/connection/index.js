@@ -91,6 +91,8 @@ const processMessage = (message) => {
 			connection.setDagNodes(data.dag_nodes);
 			data.dag_nodes.forEach((node, index) => {
 				connection.setStatus(index, STATUS.NOT_READY);
+
+				connection.setProgress(index, 0);
 			});
 			connection.setGotInitial(true);
 		} catch (e) {
@@ -101,8 +103,10 @@ const processMessage = (message) => {
 
 		if (data.type === "progress") {
 			connection.setStatus(data.node_ind, STATUS.IN_PROGRESS);
+			connection.setProgress(data.node_ind, data.progress);
 		} else if (data.type === "completed") {
 			connection.setStatus(data.node_ind, STATUS.COMPLETED);
+			connection.setProgress(data.node_ind, 1);
 			connection.setDagNodesOutput(data.results, data.node_ind);
 		}
 	}

@@ -24,10 +24,9 @@ const alert = useAlertStore();
 	padding: 1rem;
 	border-radius: 0.75rem;
 	min-width: 600px;
-	// transform: translate(-50%, 0);
-}
 
-.alert--show {
-	transform: translate(-50%, 0);
+	&--show {
+		transform: translate(-50%, 0);
+	}
 }
 </style>

@@ -1,5 +1,4 @@
 <script setup>
-import { watchEffect } from "vue";
 import Node from "./Node.vue";
 
 import { useConnectionStore } from "../store";
@@ -15,6 +14,7 @@ const connection = useConnectionStore();
 			:node="node"
 			:nodeIndex="index"
 			:status="connection.dagNodesStatus[index]"
+			:progress="connection.dagNodesProgress[index]"
 			class="node"
 		/>
 	</div>

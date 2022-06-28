@@ -7,6 +7,7 @@ export const useConnectionStore = defineStore("connectionStore", {
 			connected: false,
 			dagNodes: [],
 			dagNodesStatus: [],
+			dagNodesProgress: [],
 			gotInitial: false,
 		};
 	},
@@ -34,6 +35,9 @@ export const useConnectionStore = defineStore("connectionStore", {
 		},
 		setStatus(nodeIndex, status) {
 			this.dagNodesStatus[nodeIndex] = status;
+		},
+		setProgress(nodeIndex, progress) {
+			this.dagNodesProgress[nodeIndex] = progress;
 		},
 	},
 	getters: {

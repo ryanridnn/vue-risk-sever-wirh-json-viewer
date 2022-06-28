@@ -17,7 +17,6 @@ const chartData = computed(() => {
 			{
 				data: Object.values(props.content),
 				backgroundColor: "rgb(37, 99, 235)",
-				// borderColor: "rgb(37, 99, 235)",
 				borderRadius: 5,
 				lineTension: 0.6,
 			},

@@ -74,10 +74,10 @@ header {
 		padding: 0.5rem 0.75rem;
 		border-radius: 0.25rem;
 		transition: all 0.2s ease;
-	}
 
-	button:hover:not(:disabled) {
-		transform: scale(0.9);
+		&:hover:not(:disabled) {
+			transform: scale(0.9);
+		}
 	}
 
 	&__heading {
@@ -95,20 +95,20 @@ header {
 	&__connect {
 		background-color: rgb(37 99 235);
 		color: #eee;
-	}
 
-	&__connect:disabled {
-		background-color: rgb(161 161 170);
-		color: #ddd;
+		&:disabled {
+			background-color: rgb(161 161 170);
+			color: #ddd;
+		}
 	}
 
 	&__disconnect {
 		background-color: rgb(220 38 38);
 		color: #eee;
-	}
 
-	&__disconnect:disabled {
-		background-color: rgb(252 165 165);
+		&:disabled {
+			background-color: rgb(252 165 165);
+		}
 	}
 
 	&__copy {
