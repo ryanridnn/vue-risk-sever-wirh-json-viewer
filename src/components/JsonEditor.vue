@@ -18,12 +18,12 @@ const props = defineProps({
 
 <style lang="scss">
 div.jsoneditor {
-	border: none;
+	border: none !important;
 }
 
 div.jsoneditor-outer {
-	margin: 0;
-	padding: 1.5rem 1rem;
+	margin: 0 !important;
+	padding: 1.5rem 1rem !important;
 }
 
 div.jsoneditor-field,
@@ -36,7 +36,6 @@ div.jsoneditor textarea,
 }
 
 .jsoneditor {
-	// padding: 1rem;
 	background: white;
 	border-radius: 1rem;
 
@@ -46,6 +45,6 @@ div.jsoneditor textarea,
 }
 
 .jsoneditor-vue div.jsoneditor-tree {
-	min-height: 100px;
+	min-height: 100px !important;
 }
 </style>
