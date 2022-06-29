@@ -10,6 +10,7 @@ specifiers:
   vue: ^3.2.25
   vue-chartjs: ^4.1.1
   vue-json-viewer: ^3.0.4
+  vue3-json-editor: ^1.1.5
 
 dependencies:
   '@heroicons/vue': 1.0.6_vue@3.2.37
@@ -19,6 +20,7 @@ dependencies:
   vue: 3.2.37
   vue-chartjs: 4.1.1_chart.js@3.8.0+vue@3.2.37
   vue-json-viewer: 3.0.4_vue@3.2.37
+  vue3-json-editor: 1.1.5
 
 devDependencies:
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.12+vue@3.2.37
@@ -198,6 +200,11 @@ packages:
       good-listener: 1.2.2
       select: 1.1.2
       tiny-emitter: 2.1.0
+    dev: false
+
+  /core-js/3.23.3:
+    resolution: {integrity: sha512-oAKwkj9xcWNBAvGbT//WiCdOMpb9XQG92/Fe3ABFM/R16BsHgePG00mFOgKf7IsCtfj8tA1kHtf/VwErhriz5Q==}
+    requiresBuild: true
     dev: false
 
   /csstype/2.6.20:
@@ -684,4 +691,11 @@ packages:
       '@vue/runtime-dom': 3.2.37
       '@vue/server-renderer': 3.2.37_vue@3.2.37
       '@vue/shared': 3.2.37
+    dev: false
+
+  /vue3-json-editor/1.1.5:
+    resolution: {integrity: sha512-p+hbl5SdMifA9brPt9TsG2HYB7Xy7xy98b61zcIusVpwhGtS5a0IwWPKM7BXcj9poIdc/bPs4AFchQOHIBq++w==}
+    dependencies:
+      core-js: 3.23.3
+      vue: 3.2.37
     dev: false

@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps, computed } from "vue";
 import Output from "./Output.vue";
+import JsonEditor from "./JsonEditor.vue";
 import { useConnectionStore, useAlertStore } from "../store";
 import { updateParam } from "../connection";
 import { STATUS } from "../constants";
@@ -30,25 +31,26 @@ const nodeClass = computed(() => {
 	}
 });
 
-const handleSubmit = (e, key) => {
-	if (
-		(e.code === "Enter") & (e.target.value !== "") &&
-		!!Number(e.target.value)
-	) {
-		if (
-			key === "parallel_shift" &&
-			(!Number(e.target.value) ||
-				Number(e.target.value) < -0.05 ||
-				Number(e.target.value) > 0.05)
-		) {
-			alert.showAlert("Alert: Insert value between -0.05 and 0.05");
-			return;
+const handleSubmit = (val) => {
+	Object.keys(props.node.input_params).forEach((inputKey) => {
+		if (props.node.input_params[inputKey] !== val[inputKey]) {
+			if (val[inputKey] !== "" && !!Number(val[inputKey])) {
+				if (
+					inputKey === "parallel_shift" &&
+					(!Number(val[inputKey]) ||
+						Number(val[inputKey]) < -0.05 ||
+						Number(val[inputKey]) > 0.05)
+				) {
+					alert.showAlert(
+						"Alert: Insert value between -0.05 and 0.05"
+					);
+					return;
+				} else {
+					updateParam(props.nodeIndex, inputKey, val[inputKey]);
+				}
+			}
 		}
-
-		updateParam(props.nodeIndex, key, e.target.value);
-	} else {
-		return;
-	}
+	});
 };
 </script>
 
@@ -73,22 +75,11 @@ const handleSubmit = (e, key) => {
 		<div class="node__inputs">
 			<h2>Input params</h2>
 
-			<div
-				v-for="key in Object.keys(props.node.input_params)"
-				:key="key"
-				class="node__input"
-			>
-				<span class="node__input__name">
-					{{ key }}
-				</span>
-				<input
-					type="number"
-					:value="props.node.input_params[key]"
-					@keydown="(e) => handleSubmit(e, key)"
-					:max="key === 'parallel_shift' ? 0.05 : false"
-					:min="key === 'parallel_shift' ? -0.05 : false"
-				/>
-			</div>
+			<JsonEditor
+				class="node__input-editor"
+				:model="props.node.input_params"
+				:onChange="handleSubmit"
+			/>
 		</div>
 		<div class="node__outputs">
 			<h2>Output Params</h2>
@@ -155,7 +146,6 @@ const handleSubmit = (e, key) => {
 		top: 0;
 		left: 0;
 		height: 100%;
-		// width: 60%;
 		background: #ffa500;
 		transition: all 0.2s ease;
 	}
@@ -168,6 +158,7 @@ const handleSubmit = (e, key) => {
 	&__inputs {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
 		gap: 0.5rem;
 		margin-bottom: 1.5rem;
 		font-size: 0.875rem;
@@ -187,6 +178,10 @@ const handleSubmit = (e, key) => {
 		input:focus {
 			outline: 1px solid rgb(14 165 233);
 		}
+	}
+
+	&__input-editor {
+		margin-top: 0.5rem;
 	}
 
 	&__outputs {
