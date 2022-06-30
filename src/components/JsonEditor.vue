@@ -1,19 +1,25 @@
 <script setup>
-import { defineProps, ref } from "vue";
+import { defineProps, computed } from "vue";
 import { Vue3JsonEditor } from "vue3-json-editor";
 
 const props = defineProps({
 	model: Object,
 	onChange: Function,
 });
+
+const model = computed(() => {
+	let newModel = {};
+
+	Object.keys(props.model).map((key) => {
+		newModel = { ...newModel, [key]: String(props.model[key]) };
+	});
+
+	return newModel;
+});
 </script>
 
 <template>
-	<Vue3JsonEditor
-		v-model="props.model"
-		mode="form"
-		@json-change="props.onChange"
-	/>
+	<Vue3JsonEditor v-model="model" mode="form" @json-change="props.onChange" />
 </template>
 
 <style lang="scss">

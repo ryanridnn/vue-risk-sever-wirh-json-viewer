@@ -32,21 +32,30 @@ const nodeClass = computed(() => {
 });
 
 const handleSubmit = (val) => {
-	Object.keys(props.node.input_params).forEach((inputKey) => {
-		if (props.node.input_params[inputKey] !== val[inputKey]) {
-			if (val[inputKey] !== "" && !!Number(val[inputKey])) {
+	Object.keys(val).map((inputKey) => {
+		if (val[inputKey].match(new RegExp("\n"))) {
+			const value = Number(val[inputKey].replace("\n", ""));
+
+			if (value !== "" && !!Number(value)) {
 				if (
 					inputKey === "parallel_shift" &&
-					(!Number(val[inputKey]) ||
-						Number(val[inputKey]) < -0.05 ||
-						Number(val[inputKey]) > 0.05)
+					(!Number(value) ||
+						Number(value) < -0.05 ||
+						Number(value) > 0.05)
 				) {
 					alert.showAlert(
 						"Alert: Insert value between -0.05 and 0.05"
 					);
 					return;
 				} else {
-					updateParam(props.nodeIndex, inputKey, val[inputKey]);
+					updateParam(props.nodeIndex, inputKey, value);
+					if (document.activeElement) {
+						document.activeElement.textContent =
+							document.activeElement.textContent.replace(
+								"\n",
+								""
+							);
+					}
 				}
 			}
 		}
