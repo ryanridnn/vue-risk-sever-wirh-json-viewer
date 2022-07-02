@@ -107,15 +107,17 @@ const processMessage = (message) => {
 			connection.setProgress(data.node_ind, 1);
 			connection.setDagNodesOutput(data.results, data.node_ind);
 		} else if (data.type === "name") {
-			let s = "";
+			if (!connection.connectionUrl.includes(data.name)) {
+				let s = "";
 
-			if (!connection.connectionUrl.endsWith("/")) {
-				s = "/";
+				if (!connection.connectionUrl.endsWith("/")) {
+					s = "/";
+				}
+
+				connection.setConnectionUrl(
+					connection.connectionUrl + s + data.name
+				);
 			}
-
-			connection.setConnectionUrl(
-				connection.connectionUrl + s + data.name
-			);
 		} else if (data.type === "param_update") {
 			connection.setDagNodesInput(
 				{ [data.key]: data.value },
