@@ -70,8 +70,6 @@ export const updateParam = (nodeIndex, key, value) => {
 		const params = {};
 
 		params[key] = value;
-
-		connection.setDagNodesInput(params, nodeIndex);
 	}
 };
 
@@ -108,6 +106,21 @@ const processMessage = (message) => {
 			connection.setStatus(data.node_ind, STATUS.COMPLETED);
 			connection.setProgress(data.node_ind, 1);
 			connection.setDagNodesOutput(data.results, data.node_ind);
+		} else if (data.type === "name") {
+			let s = "";
+
+			if (!connection.connectionUrl.endsWith("/")) {
+				s = "/";
+			}
+
+			connection.setConnectionUrl(
+				connection.connectionUrl + s + data.name
+			);
+		} else if (data.type === "param_update") {
+			connection.setDagNodesInput(
+				{ [data.key]: data.value },
+				data.node_ind
+			);
 		}
 	}
 };

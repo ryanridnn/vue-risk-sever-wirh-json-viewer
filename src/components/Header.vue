@@ -1,17 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed, watchEffect } from "vue";
 import { useConnection, disconnect } from "../connection";
 import { useConnectionStore } from "../store";
-import { CONNECTION_URL } from "../constants";
 import { copy } from "../utils";
 
 import JsonViewer from "vue-json-viewer";
 
-const url = ref(CONNECTION_URL);
 const connection = useConnectionStore();
+const connectionUrl = ref(connection.connectionUrl);
 
 const handleConnect = () => {
-	useConnection(url.value);
+	useConnection(connectionUrl.value);
 };
 
 const handleDisconnect = () => {
@@ -21,6 +20,10 @@ const handleDisconnect = () => {
 const handleCopy = () => {
 	copy(url.value);
 };
+
+watchEffect(() => {
+	connectionUrl.value = connection.connectionUrl;
+});
 </script>
 
 <template>
@@ -33,7 +36,7 @@ const handleCopy = () => {
 				type="text"
 				placeholder="Connection Url here..."
 				class="connection__input"
-				v-model="url"
+				v-model="connectionUrl"
 				:disabled="connection.connected"
 			/>
 			<button

@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
+import { CONNECTION_URL } from "../constants/";
 
 export const useConnectionStore = defineStore("connectionStore", {
 	state: () => {
 		return {
 			ws: null,
 			connected: false,
+			connectionUrl: CONNECTION_URL,
 			dagNodes: [],
 			dagNodesStatus: [],
 			dagNodesProgress: [],
@@ -17,6 +19,9 @@ export const useConnectionStore = defineStore("connectionStore", {
 		},
 		setConnected(bool) {
 			this.connected = bool;
+		},
+		setConnectionUrl(url) {
+			this.connectionUrl = url;
 		},
 		setDagNodes(dagNodes) {
 			this.dagNodes = dagNodes;
