@@ -18,7 +18,7 @@ const handleDisconnect = () => {
 };
 
 const handleCopy = () => {
-	copy(url.value);
+	copy(connectionUrl.value);
 };
 
 watchEffect(() => {
