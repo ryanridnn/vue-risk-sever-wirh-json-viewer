@@ -36,10 +36,10 @@ const handleSubmit = (val) => {
 		if (val[inputKey].match(new RegExp("\n"))) {
 			const value = Number(val[inputKey].replace("\n", ""));
 
-			if (value !== "" && !!Number(value)) {
+			if (value !== "" && !isNaN(Number(value))) {
 				if (
 					inputKey === "parallel_shift" &&
-					(!Number(value) ||
+					(isNaN(Number(value)) ||
 						Number(value) < -0.05 ||
 						Number(value) > 0.05)
 				) {
